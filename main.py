@@ -32,8 +32,8 @@ def main_koch():
         up()
         goto(-100, 0)
         down()
-        n = int(input('Глубина рекурсии:'))
-        a = int(input('Длина стороны:'))
+        n = int(input('Глубина рекурсии: '))
+        a = int(input('Длина стороны: '))
         koch(n, a)
     except ValueError:
         print('Введите целое число')
