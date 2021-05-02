@@ -1,9 +1,9 @@
 """
 Case - study: Fractals
 Devs:
-    M.Kondrashov - 40 %
-    E.Bikmetov -
-    K.Bychkov -
+    M.Kondrashov - 60 %
+    E.Bikmetov - 30%
+    K.Bychkov - 30%
 """
 
 from turtle import *
