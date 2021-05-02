@@ -1,7 +1,7 @@
 """
 Case - study: Fractals
 Devs:
-    M.Kondrashov - 60 %
+    M.Kondrashov - 50 %
     E.Bikmetov - 30%
     K.Bychkov - 30%
 """
