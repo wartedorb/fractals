@@ -231,6 +231,7 @@ def main_dragon():
 
 
 def binar_tree(angl, h, size=100):
+    """Фрактал бинарное дерево"""
     if h == 0:
         return
 
@@ -258,6 +259,7 @@ def main_binar_tree():
         main_binar_tree()
 
 def branch(n, size):
+    """Фрактал Ветка"""
     if n == 0:
         left(180)
         return
@@ -276,6 +278,7 @@ def branch(n, size):
     forward(size)
 
 def main_brach():
+    """Запрос параметров для фрактала ветка"""
     try:
         n = int(input('Введите глубину рекурсии: '))
         size = int(input("Введите размер: "))
