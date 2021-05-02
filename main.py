@@ -1,19 +1,19 @@
-'''
+"""
 Case - study: Fractals
 Devs:
     M.Kondrashov - 40 %
     E.Bikmetov -
     K.Bychkov -
-'''
-
+"""
 
 from turtle import *
 from math import sqrt
+
 speed(100000000000000000000)
 
 
 def koch(order, size):
-    '''Рисует фрактал Коха'''
+    """Рисует фрактал Коха"""
     if order == 0:
         forward(size)
     else:
@@ -27,7 +27,7 @@ def koch(order, size):
 
 
 def main_koch():
-    '''Функция запроса глубины и длины (Кох)'''
+    """Функция запроса глубины и длины (Кох)"""
     up()
     goto(-100, 0)
     down()
@@ -37,7 +37,7 @@ def main_koch():
 
 
 def iced(order, size):
-    '''Рисует "ледяной" фрактал'''
+    """Рисует "ледяной" фрактал"""
     if order == 0:
         forward(size)
     else:
@@ -51,7 +51,7 @@ def iced(order, size):
 
 
 def main_iced():
-    '''Функция запроса глубины и длины (Ледяной)'''
+    """Функция запроса глубины и длины (Ледяной)"""
     up()
     goto(-100, 0)
     down()
@@ -61,7 +61,7 @@ def main_iced():
 
 
 def iced_2(order, size):
-    '''Рисует "ледяной" фрактал - 2'''
+    """Рисует "ледяной" фрактал - 2"""
     if order == 0:
         forward(size)
     else:
@@ -79,7 +79,7 @@ def iced_2(order, size):
 
 
 def main_iced_2():
-    '''Функция запроса глубины и длины (Ледяной - 2)'''
+    """Функция запроса глубины и длины (Ледяной - 2)"""
     up()
     goto(-100, 0)
     down()
@@ -89,7 +89,7 @@ def main_iced_2():
 
 
 def koch_snowflake(order, size):
-    '''Фрактал снежинка Коха'''
+    """Фрактал снежинка Коха"""
     if order == 0:
         koch(order, size)
         right(120)
@@ -106,7 +106,7 @@ def koch_snowflake(order, size):
 
 
 def main_koch_snowflake():
-    '''Функция запроса глубины рекурсии и длины ( Снежинка Коха )'''
+    """Функция запроса глубины рекурсии и длины ( Снежинка Коха )"""
     up()
     goto(-100, 0)
     down()
@@ -119,13 +119,13 @@ def minkovsky(order, size):
     if order == 0:
         forward(size)
     else:
-        minkovsky(order-1, size/4)
+        minkovsky(order - 1, size / 4)
         left(90)
-        minkovsky(order-1, size/4)
+        minkovsky(order - 1, size / 4)
         right(90)
-        minkovsky(order-1, size/4)
+        minkovsky(order - 1, size / 4)
         right(90)
-        minkovsky(order-1, size/4)
+        minkovsky(order - 1, size / 4)
         minkovsky(order - 1, size / 4)
         left(90)
         minkovsky(order - 1, size / 4)
@@ -136,7 +136,7 @@ def minkovsky(order, size):
 
 
 def main_minkovsky():
-    '''Функция запроса глубины рекурсии и длины ( Минковский )'''
+    """Функция запроса глубины рекурсии и длины ( Минковский )"""
     up()
     goto(-100, 0)
     down()
@@ -150,14 +150,14 @@ def levi(order, size):
         forward(size)
     else:
         left(45)
-        levi(order-1, sqrt(2*(size/2)**2))
+        levi(order - 1, sqrt(2 * (size / 2) ** 2))
         right(90)
         levi(order - 1, sqrt(2 * (size / 2) ** 2))
         left(45)
 
 
 def main_levi():
-    '''Функция запроса глубины рекурсии и длины ( Минковский )'''
+    """Функция запроса глубины рекурсии и длины ( Минковский )"""
     up()
     goto(-100, 0)
     down()
@@ -166,11 +166,44 @@ def main_levi():
     levi(n, a)
 
 
+def s(size):
+    return sqrt((size ** 2 / 2))
+
+
+def dragon(order, size, a='l'):
+    if order == 0:
+        forward(size)
+    else:
+        if a == 'l':
+            left(45)
+        else:
+            right(45)
+        dragon(order - 1, s(size), a='l')
+        if a == 'l':
+            right(90)
+        else:
+            left(90)
+        dragon(order - 1, s(size), a='r')
+        if a == 'l':
+            left(45)
+        else:
+            right(45)
+
+
+def main_dragon():
+    up()
+    goto(-100, 0)
+    down()
+    n = int(input('Глубина рекурсии:'))
+    a = int(input('Длина стороны:'))
+    dragon(n, a)
+
+
 def fractal_asking():
     while True:
         try:
             fractal = int(input('Фракталы:\n1- Коха\n2 - Снежинка Коха\n'
-                                '3 - Ледяной\n4 - Ледяной (2)\n5 - Минковского\n6 - Леви\n'
+                                '3 - Ледяной\n4 - Ледяной (2)\n5 - Минковского\n6 - Леви\n7 - Дракон Хартера-Хейтуэя\n'
                                 'Напишите номер фрактала, который хотите увидеть: '))
             return fractal
         except ValueError:
@@ -190,6 +223,8 @@ def main_of_mains(fractal):
         main_minkovsky()
     elif fractal == 6:
         main_levi()
+    elif fractal == 7:
+        main_dragon()
     else:
         print('Такого фрактала нет.')
         fractal = fractal_asking()
@@ -198,5 +233,5 @@ def main_of_mains(fractal):
 
 num = fractal_asking()
 main_of_mains(num)
-#hideturtle()
+hideturtle()
 done()
