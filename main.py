@@ -230,12 +230,68 @@ def main_dragon():
         main_dragon()
 
 
+def binar_tree(angl, h, size=100):
+    if h == 0:
+        return
+
+    fd(size)
+    left(angl)
+    binar_tree(angl, h - 1, int(size / 1.5))
+    left(-2 * angl)
+    binar_tree(angl, h - 1, int(size / 1.5))
+    left(angl)
+    fd(-size)
+
+
+def main_binar_tree():
+    """Запрос переменных для бинарного дерева"""
+    try:
+        up()
+        goto(-100, 0)
+        left(90)
+        down()
+        angl = int(input('Введите угол наклона: '))
+        h = int(input('Введите высоту дерева (в изломах): '))
+        binar_tree(angl, h)
+    except ValueError:
+        print('Введите целое число')
+        main_binar_tree()
+
+def branch(n, size):
+    if n == 0:
+        left(180)
+        return
+
+    x = size/(n+1)
+    for i in range(n):
+        forward(x)
+        left(45)
+        branch(n-i-1, 0.5*x*(n-i-1))
+        left(90)
+        branch(n-i-1, 0.5*x*(n-i-1))
+        right(135)
+
+    forward(x)
+    left(180)
+    forward(size)
+
+def main_brach():
+    try:
+        n = int(input('Введите глубину рекурсии: '))
+        size = int(input("Введите размер: "))
+        left(90)
+        branch(n, size)
+    except ValueError:
+        print('Введите целое число')
+        main_brach()
+
 def fractal_asking():
     """Запрос фрактала"""
     while True:
         try:
             fractal = int(input('Фракталы:\n1 - Коха\n2 - Снежинка Коха\n'
                                 '3 - Ледяной\n4 - Ледяной (2)\n5 - Минковского\n6 - Леви\n7 - Дракон Хартера-Хейтуэя\n'
+                                '8 - Бинарное дерево\n9 - Ветка\n'
                                 'Напишите номер фрактала, который хотите увидеть: '))
             return fractal
         except ValueError:
@@ -258,6 +314,10 @@ def main_of_mains(fractal):
         main_levi()
     elif fractal == 7:
         main_dragon()
+    elif fractal == 8:
+        main_binar_tree()
+    elif fractal == 9:
+        main_brach()
     else:
         print('Такого фрактала нет.')
         fractal = fractal_asking()
