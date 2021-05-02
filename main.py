@@ -28,12 +28,16 @@ def koch(order, size):
 
 def main_koch():
     """Функция запроса глубины и длины (Кох)"""
-    up()
-    goto(-100, 0)
-    down()
-    n = int(input('Глубина рекурсии:'))
-    a = int(input('Длина стороны:'))
-    koch(n, a)
+    try:
+        up()
+        goto(-100, 0)
+        down()
+        n = int(input('Глубина рекурсии:'))
+        a = int(input('Длина стороны:'))
+        koch(n, a)
+    except ValueError:
+        print('Введите целое число')
+        main_koch()
 
 
 def iced(order, size):
@@ -52,12 +56,16 @@ def iced(order, size):
 
 def main_iced():
     """Функция запроса глубины и длины (Ледяной)"""
-    up()
-    goto(-100, 0)
-    down()
-    n = int(input('Глубина рекурсии:'))
-    a = int(input('Длина стороны:'))
-    iced(n, a)
+    try:
+        up()
+        goto(-100, 0)
+        down()
+        n = int(input('Глубина рекурсии: '))
+        a = int(input('Длина стороны: '))
+        iced(n, a)
+    except ValueError:
+        print('Введите целое число')
+        main_iced()
 
 
 def iced_2(order, size):
@@ -80,12 +88,16 @@ def iced_2(order, size):
 
 def main_iced_2():
     """Функция запроса глубины и длины (Ледяной - 2)"""
-    up()
-    goto(-100, 0)
-    down()
-    n = int(input('Глубина рекурсии:'))
-    a = int(input('Длина стороны:'))
-    iced(n, a)
+    try:
+        up()
+        goto(-100, 0)
+        down()
+        n = int(input('Глубина рекурсии: '))
+        a = int(input('Длина стороны: '))
+        iced_2(n, a)
+    except ValueError:
+        print('Введите целое число')
+        main_iced_2()
 
 
 def koch_snowflake(order, size):
@@ -107,12 +119,16 @@ def koch_snowflake(order, size):
 
 def main_koch_snowflake():
     """Функция запроса глубины рекурсии и длины ( Снежинка Коха )"""
-    up()
-    goto(-100, 0)
-    down()
-    n = int(input('Глубина рекурсии:'))
-    a = int(input('Длина стороны:'))
-    koch_snowflake(n, a)
+    try:
+        up()
+        goto(-100, 0)
+        down()
+        n = int(input('Глубина рекурсии: '))
+        a = int(input('Длина стороны: '))
+        koch_snowflake(n, a)
+    except ValueError:
+        print('Введите целое число')
+        main_koch_snowflake()
 
 
 def minkovsky(order, size):
@@ -137,12 +153,16 @@ def minkovsky(order, size):
 
 def main_minkovsky():
     """Функция запроса глубины рекурсии и длины ( Минковский )"""
-    up()
-    goto(-100, 0)
-    down()
-    n = int(input('Глубина рекурсии:'))
-    a = int(input('Длина стороны:'))
-    minkovsky(n, a)
+    try:
+        up()
+        goto(-100, 0)
+        down()
+        n = int(input('Глубина рекурсии: '))
+        a = int(input('Длина стороны: '))
+        minkovsky(n, a)
+    except ValueError:
+        print('Введите целое число')
+        main_minkovsky()
 
 
 def levi(order, size):
@@ -158,19 +178,25 @@ def levi(order, size):
 
 def main_levi():
     """Функция запроса глубины рекурсии и длины ( Минковский )"""
-    up()
-    goto(-100, 0)
-    down()
-    n = int(input('Глубина рекурсии:'))
-    a = int(input('Длина стороны:'))
-    levi(n, a)
+    try:
+        up()
+        goto(-100, 0)
+        down()
+        n = int(input('Глубина рекурсии: '))
+        a = int(input('Длина стороны: '))
+        levi(n, a)
+    except ValueError:
+        print('Введите целое число')
+        main_levi()
 
 
 def s(size):
+    """Расчет стороны для дракона"""
     return sqrt((size ** 2 / 2))
 
 
 def dragon(order, size, a='l'):
+    """Фрактал дракон"""
     if order == 0:
         forward(size)
     else:
@@ -191,18 +217,24 @@ def dragon(order, size, a='l'):
 
 
 def main_dragon():
-    up()
-    goto(-100, 0)
-    down()
-    n = int(input('Глубина рекурсии:'))
-    a = int(input('Длина стороны:'))
-    dragon(n, a)
+    """Фрактал - дракон запрос глубины и стороны"""
+    try:
+        up()
+        goto(-100, 0)
+        down()
+        n = int(input('Глубина рекурсии: '))
+        a = int(input('Длина стороны: '))
+        dragon(n, a)
+    except ValueError:
+        print('Введите целое число')
+        main_dragon()
 
 
 def fractal_asking():
+    """Запрос фрактала"""
     while True:
         try:
-            fractal = int(input('Фракталы:\n1- Коха\n2 - Снежинка Коха\n'
+            fractal = int(input('Фракталы:\n1 - Коха\n2 - Снежинка Коха\n'
                                 '3 - Ледяной\n4 - Ледяной (2)\n5 - Минковского\n6 - Леви\n7 - Дракон Хартера-Хейтуэя\n'
                                 'Напишите номер фрактала, который хотите увидеть: '))
             return fractal
@@ -211,6 +243,7 @@ def fractal_asking():
 
 
 def main_of_mains(fractal):
+    """Запуск фрактала"""
     if fractal == 1:
         main_koch()
     elif fractal == 2:
